@@ -4,6 +4,13 @@ import sys
 import subprocess
 import os
 
+def delRData():
+    try:
+        subprocess.run("rm .RData", shell=True, executable="/bin/bash")
+    except Exception as e:
+        pass
+
+
 def clean_gz():
     subprocess.run("rm *.gz", shell=True, executable="/bin/bash")
     subprocess.run("rm .RData", shell=True, executable="/bin/bash")

@@ -288,6 +288,8 @@ def main(url_list, tree):
     welcome_message()
     #Función que verifica el entorno necesario para que el programa funcione.
     check_dependencies()
+    cl.delRData()
+
 
     #Función que descarga los archivo faa de internet y los guarda.
     print("------------------------------------------------------------")
