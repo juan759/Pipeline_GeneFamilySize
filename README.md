@@ -6,10 +6,15 @@ This project encompasses a comprehensive pipeline designed to facilitate the cre
 Clone the repository to your machine and start using the project, the main function is located at "SSD_genefamilysize.py". Ensure the system has python>=3.9.x.
 
 The tools necessary for the pipeline to run smoothly are samtools, awk, grep, curl, gzip and the project Orthofinder(https://github.com/davidemms/OrthoFinder.git).
+To keep this tool from using all of your computer resources you can issue the following command before executing the tool:
+```bash
+ulimit -v <kbytes of maximun address to use for user>
+```
 
-NOTE:Using this installation method you might need to change the working directory for the R script to the full path or wherever you downloaded the project or where you are going to save the python files. You might need to change the path of the command that executes the orthofinder project this is in the line 208(if you want to use a specific .tre file) or line 210(if you don't want to use any specific .tre file).
+NOTE:Using this installation method you will need to change the working directory for the R scripts to the full path or where you downloaded the project or where you are going to save the python files. You might need to change the path of the command that executes the orthofinder project this is in the line 208(if you want to use a specific .tre file) or line 210(if you don't want to use any specific .tre file).
 
 ### Docker
+(STILL UNDER DEVELOPMENT)
 Alternatively you can clone the repository, and use the Dockerfile attached to build an image and use the project inside that image.
 
 For this you will need to first create an image with the docker file:
@@ -34,14 +39,16 @@ The .csv file must contain the columns "Names" and "NCBI Link", and this last co
 
 The script accepts two parameters, one optional and one required:
 
---url-list(Required): A text or csv file containing URLs for the NCBI genomes to be downloaded.
+--url-list(Required): A csv file containing URLs for the NCBI genomes to be downloaded and the names with which to rename the downloaded files.
 
 --ortho-tree(Optional): A tree file (in the "tre" format) specifying the tree to be utilized in the processing.
 
 # Usage Examples:
-```
+Without .tre file:
+```bash
 python3 SSD_genefamilysize.py --url-list genomes.csv
 ```
-```
-python3 SSD_genefamilysize.py --url-list genomes.csv --format-list csv --ortho-three Mammalia_tree_130spp_plosOne_timetree_addedTips.tre
+With .tre file.
+```bash
+python3 SSD_genefamilysize.py --url-list genomes.csv --ortho-three Mammalia_tree_130spp_plosOne_timetree_addedTips.tre
 ```
