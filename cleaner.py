@@ -7,7 +7,6 @@ import os
 def clean_gz():
     subprocess.run("rm *.gz", shell=True, executable="/bin/bash")
     subprocess.run("rm .RData", shell=True, executable="/bin/bash")
-
     print("Removed gz(compressed) files.")
 
 
